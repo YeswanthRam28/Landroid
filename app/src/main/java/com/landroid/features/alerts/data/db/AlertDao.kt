@@ -37,4 +37,7 @@ interface AlertDao {
 
     @Query("SELECT COUNT(*) FROM alerts WHERE isRead = 0")
     fun getUnreadCount(): Flow<Int>
+
+    @Query("DELETE FROM alerts WHERE timestamp < :timestampThreshold")
+    suspend fun clearOldAlerts(timestampThreshold: Long)
 }

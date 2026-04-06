@@ -11,7 +11,8 @@ data class NdviZoneDto(
     val colorHex: String,
     val minNdvi: Float,
     val maxNdvi: Float,
-    val areaPercent: Float
+    val areaPercent: Float,
+    val previousAreaPercent: Float? = null
 ) {
     fun toNdviZone(): NdviZone {
         return NdviZone(
@@ -30,7 +31,11 @@ data class TreeCountDto(
     val canopies: List<CanopyDto>,
     val totalCount: Int,
     val stressedCount: Int,
-    val densityPerAcre: Float
+    val densityPerAcre: Float,
+    val previousTotalCount: Int? = null,
+    val previousStressedCount: Int? = null,
+    val surveyDate: String? = null,
+    val previousSurveyDate: String? = null
 )
 
 data class CanopyDto(

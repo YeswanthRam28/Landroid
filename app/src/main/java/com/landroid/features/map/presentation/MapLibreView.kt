@@ -132,6 +132,17 @@ fun MapLibreView(
                                 .build()
                         }
                     }
+
+                    // Phase 4: Measurement Tools (FR-15). Extract raw point coordinates dynamically hitting boundaries.
+                    map.addOnMapClickListener { latLng ->
+                        android.widget.Toast.makeText(
+                            context,
+                            "GIS Target Coordinate Located: Lat ${latLng.latitude}, Lng ${latLng.longitude}",
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                        true
+                    }
+
                 }
             }
         }

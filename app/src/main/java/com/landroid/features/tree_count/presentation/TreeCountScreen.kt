@@ -20,7 +20,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Alignment
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ArrowUpward
+import androidx.compose.material.icons.outlined.ArrowDownward
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -104,6 +108,28 @@ fun TreeCountScreen(
                 fontSize = 14.sp,
                 color = LandroidColors.OnSurfaceVariant
             )
+
+            // FR-28 / FR-31 logic: Mandatory Comparison against previous survey
+            if (state.previousTotalCount != null) {
+                val diff = state.totalCount - state.previousTotalCount!!
+                Spacer(Modifier.height(4.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    androidx.compose.material3.Icon(
+                        imageVector = if (diff >= 0) androidx.compose.material.icons.Icons.Outlined.ArrowUpward else androidx.compose.material.icons.Icons.Outlined.ArrowDownward,
+                        contentDescription = null,
+                        tint = if (diff >= 0) LandroidColors.PrimaryContainer else LandroidColors.Error,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                    Text(
+                        text = "vs ${state.previousSurveyDate ?: "last survey"}: ${kotlin.math.abs(diff)} ${if (diff >= 0) "New" else "Missing"} Trees",
+                        fontFamily = PlusJakartaSansFont,
+                        fontSize = 12.sp,
+                        color = if (diff >= 0) LandroidColors.PrimaryContainer else LandroidColors.Error,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+            }
 
             Spacer(Modifier.height(8.dp))
 

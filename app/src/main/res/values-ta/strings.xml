@@ -1,95 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- ஆப் -->
-    <string name="app_name">லேண்ட்ராய்ட்</string>
-    <string name="app_tagline">AI நில புலனாய்வு</string>
+    <!-- App -->
+    <string name="app_name">லேண்ட்ராய்டு</string>
+    <string name="app_tagline">எஐ நில நுண்ணறிவு</string>
 
-    <!-- ஆன்போர்டிங் -->
+    <!-- Onboarding -->
     <string name="onboarding_consultant_cta">நான் நில ஆலோசகர்</string>
     <string name="onboarding_landowner_cta">நான் நில உரிமையாளர்</string>
-    <string name="onboarding_role_disclaimer">பதிவுக்குப் பிறகு பாத்திரம் நிரந்தரமாகும்</string>
+    <string name="onboarding_role_disclaimer">பதிவுக்குப் பிறகு பங்கை மாற்ற முடியாது</string>
 
-    <!-- OTP திரை -->
+    <!-- OTP Screen -->
     <string name="otp_title">உங்கள் எண்ணை சரிபார்க்கவும்</string>
     <string name="otp_subtitle">அனுப்பப்பட்ட 6 இலக்க குறியீட்டை உள்ளிடவும்</string>
-    <string name="otp_google_cta">Google மூலம் தொடரவும்</string>
-    <string name="otp_or_enter_code">அல்லது குறியீடு உள்ளிடவும்</string>
-    <string name="otp_resend_prefix">மீண்டும் அனுப்ப</string>
-    <string name="otp_verify_cta">சரிபார்க்கவும் &amp; தொடரவும்</string>
-    <string name="otp_terms">தொடர்வதன் மூலம் சேவை விதிமுறைகளை ஏற்கிறீர்கள்</string>
+    <string name="otp_google_cta">கூகுளுடன் தொடரவும்</string>
+    <string name="otp_or_enter_code">அல்லது குறியீட்டை உள்ளிடவும்</string>
+    <string name="otp_resend_prefix">மீண்டும் அனுப்பு</string>
+    <string name="otp_verify_cta">சரிபார்த்து தொடரவும்</string>
+    <string name="otp_terms">தொடர்வதன் மூலம், நீங்கள் சேவை விதிமுறைகளை ஏற்கிறீர்கள்</string>
 
-    <!-- நில பட்டியல் -->
+    <!-- Parcel List -->
     <string name="parcels_greeting">காலை வணக்கம்</string>
-    <string name="parcels_search_hint">நில தேடல்…</string>
-    <string name="parcels_count">%1$d நிலங்கள்</string>
-    <string name="parcels_at_risk">%1$d ஆபத்தில் உள்ளது</string>
+    <string name="parcels_search_hint">பார்சல்களை தேடுக…</string>
+    <string name="parcels_count">%1$d பார்சல்கள்</string>
+    <string name="parcels_at_risk">%1$d ஆபத்தில் உள்ளன</string>
     <string name="parcels_alerts">%1$d எச்சரிக்கைகள்</string>
-    <string name="parcel_health_score">நில ஆரோக்கிய மதிப்பெண்</string>
-    <string name="parcel_assigned_to">ஒதுக்கப்பட்டவர்: %1$s</string>
-    <string name="parcel_ndvi_label">NDVI</string>
+    <string name="parcel_health_score">நில சுகாதார மதிப்பெண்</string>
+    <string name="parcel_assigned_to">ஒதுக்கப்பட்டது: %1$s</string>
+    <string name="parcel_ndvi_label">என்டிவிஐ</string>
     <string name="parcel_rain_label">மழை</string>
     <string name="parcel_soil_label">மண்</string>
 
-    <!-- வழிசெலுத்தல் -->
+    <!-- Navigation -->
     <string name="nav_map">வரைபடம்</string>
-    <string name="nav_parcels">நிலங்கள்</string>
+    <string name="nav_parcels">பார்சல்கள்</string>
     <string name="nav_alerts">எச்சரிக்கைகள்</string>
     <string name="nav_settings">அமைப்புகள்</string>
 
-    <!-- வரைபட திரை -->
-    <string name="map_layer_ortho">ஆர்தோ</string>
-    <string name="map_layer_ndvi">NDVI</string>
+    <!-- Map Screen -->
+    <string name="map_layer_ortho">ஆர்த்தோ</string>
+    <string name="map_layer_ndvi">என்டிவிஐ</string>
     <string name="map_layer_elevation">உயரம்</string>
-    <string name="map_layer_health">ஆரோக்கிய மண்டலங்கள்</string>
+    <string name="map_layer_health">சுகாதார மண்டலங்கள்</string>
     <string name="map_layer_boundary">எல்லை</string>
-    <string name="map_health_score_label">ஆரோக்கிய மதிப்பெண்</string>
+    <string name="map_health_score_label">சுகாதார மதிப்பெண்</string>
 
-    <!-- டாஷ்போர்டு -->
+    <!-- Dashboard -->
     <string name="dashboard_title">நில ஆரோக்கியம்</string>
-    <string name="dashboard_confidence">நம்பகத்தன்மை நிலை</string>
-    <string name="dashboard_verified">செண்டினல்-2 செயற்கைக்கோள் மூலம் சரிபார்க்கப்பட்டது</string>
+    <string name="dashboard_confidence">நம்பிக்கை நிலை</string>
+    <string name="dashboard_verified">சென்டினல்-2 செயற்கைக்கோள் நுண்ணறிவு மூலம் சரிபார்க்கப்பட்டது</string>
 
-    <!-- மரம் எண்ணிக்கை -->
+    <!-- Tree Count -->
     <string name="trees_detected">%1$d மரங்கள் கண்டறியப்பட்டன</string>
     <string name="trees_label">மரங்கள் கண்டறியப்பட்டன</string>
     <string name="trees_per_acre">/ ஏக்கர்</string>
-    <string name="trees_stressed">அழுத்தத்தில் உள்ளது</string>
-    <string name="trees_view_markers">குறிகள்</string>
+    <string name="trees_stressed">அழுத்தம்</string>
+    <string name="trees_view_markers">குறியீடுகள்</string>
     <string name="trees_view_heatmap">வெப்ப வரைபடம்</string>
 
-    <!-- மதிப்பீடு -->
+    <!-- Valuation -->
     <string name="valuation_title">மதிப்பிடப்பட்ட நில மதிப்பு</string>
-    <string name="valuation_disclaimer">AI மதிப்பீடு — சட்டப்பூர்வ மதிப்பீடு அல்ல</string>
-    <string name="valuation_drivers">இந்த மதிப்பீட்டை உந்துவது என்ன</string>
-    <string name="valuation_update_info">நில ஆரோக்கிய மதிப்பெண் மாறும்போது புதுப்பிக்கப்படும்</string>
+    <string name="valuation_disclaimer">நுண்ணறிவு மதிப்பீடு — சட்டபூர்வமான மதிப்பீடு அல்ல</string>
+    <string name="valuation_drivers">இந்த மதிப்பீட்டை இயக்குவது எது</string>
+    <string name="valuation_update_info">நில ஆரோக்கிய மதிப்பெண் மாறும் போது புதுப்பிக்கப்படும்</string>
     <string name="valuation_positive">↑ நேர்மறை</string>
     <string name="valuation_negative">↓ எதிர்மறை</string>
 
-    <!-- எச்சரிக்கைகள் -->
+    <!-- Alerts -->
     <string name="alerts_title">எச்சரிக்கைகள்</string>
     <string name="alerts_filter_all">அனைத்தும்</string>
     <string name="alerts_filter_boundary">எல்லை</string>
-    <string name="alerts_filter_health">ஆரோக்கியம்</string>
+    <string name="alerts_filter_health">உடல்நலம்</string>
     <string name="alerts_filter_insight">நுண்ணறிவு</string>
 
-    <!-- அமைப்புகள் -->
+    <!-- Settings -->
     <string name="settings_title">அமைப்புகள்</string>
     <string name="settings_language">மொழி</string>
-    <string name="settings_language_en">ஆங்கிலம்</string>
+    <string name="settings_language_en">English</string>
     <string name="settings_language_ta">தமிழ்</string>
-    <string name="settings_geofence">புவி வேலி எச்சரிக்கை தூரம்</string>
-    <string name="settings_cache">சேமிப்பு &amp; தற்காலிக தரவு</string>
-    <string name="settings_cache_clear">தற்காலிக தரவை அழிக்கவும்</string>
+    <string name="settings_geofence">ஜியோஃபென்ஸ் எச்சரிக்கை</string>
+    <string name="settings_cache">சேமிப்பு மற்றும் தற்காலிக சேமிப்பு</string>
+    <string name="settings_cache_clear">அனைத்து தற்காலிக தரவையும் அழிக்கவும்</string>
     <string name="settings_account">கணக்கு</string>
     <string name="settings_sign_out">வெளியேறு</string>
     <string name="settings_role_consultant">ஆலோசகர்</string>
     <string name="settings_role_landowner">நில உரிமையாளர்</string>
 
-    <!-- ஆவணங்கள் -->
-    <string name="documents_title">ஆவண கோட்டை</string>
-    <string name="document_download">பதிவிறக்கம்</string>
+    <!-- Documents -->
+    <string name="documents_title">ஆவணக் காப்பகம்</string>
+    <string name="document_download">பதிவிறக்கு</string>
 
-    <!-- ஆரோக்கிய நிலை -->
+    <!-- Health Status -->
     <string name="status_healthy">ஆரோக்கியமான</string>
     <string name="status_moderate">மிதமான</string>
     <string name="status_at_risk">ஆபத்தில் உள்ளது</string>

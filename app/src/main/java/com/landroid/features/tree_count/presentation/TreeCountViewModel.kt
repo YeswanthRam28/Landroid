@@ -28,6 +28,10 @@ data class TreeCountUiState(
     val canopies: List<Canopy> = emptyList(),
     val totalCount: Int = 0,
     val stressedCount: Int = 0,
+    val previousTotalCount: Int? = null,
+    val previousStressedCount: Int? = null,
+    val surveyDate: String? = null,
+    val previousSurveyDate: String? = null,
     val densityPerAcre: Float = 0f,
     val confidence: Int = 79,
     val viewType: ViewType = ViewType.MARKERS,
@@ -75,6 +79,10 @@ class TreeCountViewModel @Inject constructor(
                             totalCount = totalTrees,
                             stressedCount = stressed,
                             densityPerAcre = density,
+                            previousTotalCount = treeData?.previousTotalCount,
+                            previousStressedCount = treeData?.previousStressedCount,
+                            surveyDate = treeData?.surveyDate,
+                            previousSurveyDate = treeData?.previousSurveyDate,
                             isLoading = false
                         )
                     }

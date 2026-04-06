@@ -23,6 +23,7 @@ import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.Image
 import androidx.compose.material.icons.outlined.Map
+import androidx.compose.material.icons.outlined.CloudUpload
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -71,6 +72,15 @@ fun DocumentVaultScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = LandroidColors.Surface)
             )
+        },
+        floatingActionButton = {
+            androidx.compose.material3.FloatingActionButton(
+                onClick = { navController.navigate("consultant_upload/$parcelId") },
+                containerColor = LandroidColors.PrimaryContainer,
+                contentColor = androidx.compose.ui.graphics.Color.White
+            ) {
+                Icon(Icons.Outlined.CloudUpload, "Upload Data")
+            }
         }
     ) { padding ->
         if (state.isLoading) {

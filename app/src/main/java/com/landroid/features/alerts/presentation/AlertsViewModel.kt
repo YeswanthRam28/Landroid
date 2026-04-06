@@ -25,6 +25,14 @@ class AlertsViewModel @Inject constructor(
     private val _selectedCategory = MutableStateFlow<AlertCategory?>(null)
     val selectedCategory = _selectedCategory.asStateFlow()
 
+    init {
+        viewModelScope.launch {
+            val ninetyDaysMs = 90L * 24 * 60 * 60 * 1000
+            val threshold = System.currentTimeMillis() - ninetyDaysMs
+            repository.clearOldAlerts(threshold)
+        }
+    }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     val alerts = _selectedCategory.flatMapLatest { category ->
         if (category == null) repository.getAllAlerts()

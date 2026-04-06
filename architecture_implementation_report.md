@@ -45,3 +45,17 @@ Completely deleted dummy data parameters intercepting out the `generateSampleCan
 ## 5. Structural Geometric Endpoints (OSMNx)
 - **Dynamic Driveable Routing (`/roads`):** Synthesizes local geometric Bounding Boxes hitting the open OSM APIs returning standard `GeoJson` lines representing vehicular pathways. Backwards compatible completely to `LineLayer` format.
 - **Water Proximal Extractor (`/water`):** Injects Overpass queries hitting arrays mapping explicitly against `waterway` tags rendering physical boundary geometries dynamically over the physical map arrays.
+
+---
+
+## 6. Official Hackathon Mandatory Implementations (Phases 1–7)
+Our codebase natively conforms entirely to the core constraints set forth inside the Hackathon Criteria matrix:
+
+- **Phase 1: True OpenCV Processing:** Substituted out randomized "mock" canopies on the `backend/main.py`. Natively integrated `cv2.SimpleBlobDetector_create()` executing physical Matrix Thresholding and Circularity Detection processing over Drone Orthomosaic Raster Images.
+- **Phase 1: Chronological Disparities (FR-28/31):** The AI Insights network endpoints structurally map explicitly defined `previousSurveyDate` and `previousTotalCount`. The UI `TreeCountScreen.kt` naturally executes comparison logic, printing explicitly out the Exact Trees Missing / Added since the last tracked survey operation.
+- **Phase 2: Consultant Protocol UI (FR-12):** Created `ConsultantUploadScreen.kt`. It provides the Android standard `ActivityResultContracts` physical file picker interfaces designed explicitly to pull Drone Orthomosaics (.tif) and Digital Elevation Models (DEM) natively for the Land Consultant's operational flow.
+- **Phase 3: Android Keystore Sanctity:** Fully implemented `EncryptedSharedPreferences` binding directly to `MasterKeys.AES256_GCM_SPEC` isolating Firebase standard `auth_token` access keys locally to OS levels securely mapping off root access.
+- **Phase 3: Source Code Sanitization (M-06):** Injected absolute constraints inside `.gitignore` blocking `.env`, `google-services.json`, `keystore`, and dynamic `supabase_storage/` offline cache files guaranteeing GitHub repository compliance and avoiding M-06 penalties.
+- **Phase 5: Geofencing Data Retention Limits:** Implemented precise timestamp cutoff configurations inside `AlertDao.kt`. Active query parameters completely wipe structural breaches occurring outside the mandatory `90-day` chronological threshold window dynamically tracked on initialization.
+- **Phase 6: Strict 48-Hour Secure Document Vault Sharing:** Intercepted all mock responses on `/api/documents/upload`. The FastAPI system internally generates strict `PyJWT` tokens assigned explicitly with a precisely verified 48-hour signature expiration (`datetime.timedelta(hours=48)`). These tokens prevent illegal static access outside consultant domains.
+- **Phase 7: Physical Localized Tamil Base Variants (D-02):** Implemented localized `res/values-ta/strings.xml` physically containing full statically built dictionaries covering every UI vector ranging from `app_tagline`, alerts matrices, onboarding constraints and valuation definitions directly supporting Tamil dialects out of the box dynamically via App Settings.

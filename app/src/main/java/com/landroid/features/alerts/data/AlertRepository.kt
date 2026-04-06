@@ -15,6 +15,7 @@ interface AlertRepository {
     suspend fun markAsRead(id: String)
     suspend fun markAllAsRead()
     fun getUnreadCount(): Flow<Int>
+    suspend fun clearOldAlerts(timestampThreshold: Long)
 }
 
 class AlertRepositoryImpl @Inject constructor(
@@ -27,4 +28,5 @@ class AlertRepositoryImpl @Inject constructor(
     override suspend fun markAsRead(id: String) = dao.markAsRead(id)
     override suspend fun markAllAsRead() = dao.markAllAsRead()
     override fun getUnreadCount() = dao.getUnreadCount()
+    override suspend fun clearOldAlerts(timestampThreshold: Long) = dao.clearOldAlerts(timestampThreshold)
 }
