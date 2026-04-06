@@ -9,4 +9,5 @@ interface ParcelRepository {
     suspend fun createParcel(parcel: Parcel): Result<Parcel>
     suspend fun updateParcel(parcel: Parcel): Result<Parcel>
     suspend fun deleteParcel(id: String): Result<Unit>
+    suspend fun getInsights(id: String): Result<com.landroid.shared.models.InsightsResponse>
 }

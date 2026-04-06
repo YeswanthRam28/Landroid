@@ -53,20 +53,28 @@ class TreeCountViewModel @Inject constructor(
     fun load(parcelId: String) {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
-            repository.getParcelById(parcelId).fold(
+            
+            val parcelResult = repository.getParcelById(parcelId)
+            val insightsResult = repository.getInsights(parcelId)
+            
+            parcelResult.fold(
                 onSuccess = { parcel ->
                     originLat = parcel.centroidLat
                     originLng = parcel.centroidLng
-                    // Use sample canopy data — in production call analyzeOrthomosaic(localPath)
-                    val sampleCanopies = generateSampleCanopies(parcel)
-                    val stressed = sampleCanopies.count { it.isStressed }
+                    
+                    val treeData = insightsResult.getOrNull()?.treeCount
+                    val canopies = treeData?.canopies?.map { it.toCanopy() } ?: emptyList()
+                    val totalTrees = treeData?.totalCount ?: 0
+                    val stressed = treeData?.stressedCount ?: 0
+                    val density = treeData?.densityPerAcre ?: 0f
+
                     _state.update {
                         it.copy(
                             parcel = parcel,
-                            canopies = sampleCanopies,
-                            totalCount = sampleCanopies.size,
+                            canopies = canopies,
+                            totalCount = totalTrees,
                             stressedCount = stressed,
-                            densityPerAcre = sampleCanopies.size / parcel.areaAcres.toFloat(),
+                            densityPerAcre = density,
                             isLoading = false
                         )
                     }
@@ -153,19 +161,5 @@ class TreeCountViewModel @Inject constructor(
         }
     }
 
-    private fun generateSampleCanopies(parcel: Parcel): List<Canopy> {
-        val count = 386
-        val random = kotlin.random.Random(parcel.id.hashCode().toLong())
-        return List(count) { i ->
-            val latOffset = (random.nextDouble() - 0.5) * 0.01
-            val lngOffset = (random.nextDouble() - 0.5) * 0.01
-            val radius = (random.nextFloat() * 3f + 1f)
-            Canopy(
-                lat = parcel.centroidLat + latOffset,
-                lng = parcel.centroidLng + lngOffset,
-                radiusMeters = radius,
-                isStressed = i % 7 == 0
-            )
-        }
-    }
+
 }

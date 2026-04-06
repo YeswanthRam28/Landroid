@@ -98,6 +98,29 @@ fun MapLibreView(
                                 PropertyFactory.lineWidth(if (isNdvi) 2f else 4f)
                             )
                         )
+
+                        // OSMNx Live API Layers
+                        val backendUrl = com.landroid.BuildConfig.BACKEND_API_URL
+                        val pid = parcel?.id ?: "demo"
+
+                        style.addSource(GeoJsonSource("water-source", java.net.URI("${backendUrl}api/parcels/$pid/water")))
+                        val waterColor = if (isNdvi) Color.argb(100, 41, 128, 185) else Color.argb(180, 52, 152, 219)
+                        style.addLayer(
+                            FillLayer("water-fill", "water-source").withProperties(
+                                PropertyFactory.fillColor(waterColor),
+                                PropertyFactory.fillOpacity(0.6f)
+                            )
+                        )
+
+                        style.addSource(GeoJsonSource("roads-source", java.net.URI("${backendUrl}api/parcels/$pid/roads")))
+                        val roadColor = if (isNdvi) Color.argb(120, 189, 195, 199) else Color.argb(180, 236, 240, 241)
+                        style.addLayer(
+                            LineLayer("roads-line", "roads-source").withProperties(
+                                PropertyFactory.lineColor(roadColor),
+                                PropertyFactory.lineWidth(1.5f)
+                            )
+                        )
+
                     }
 
                     parcel?.let { p ->

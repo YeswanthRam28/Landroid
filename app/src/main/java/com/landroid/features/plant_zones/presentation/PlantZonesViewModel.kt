@@ -16,16 +16,9 @@ import javax.inject.Inject
 
 data class PlantZonesUiState(
     val parcel: Parcel? = null,
-    val zones: List<NdviZone> = defaultZones(),
-    val stressedZoneIncreased: Boolean = true,
+    val zones: List<NdviZone> = emptyList(),
+    val stressedZoneIncreased: Boolean = false,
     val isLoading: Boolean = false
-)
-
-fun defaultZones() = listOf(
-    NdviZone("bare",    Color(0xFFE53E3E), 0.0f, 0.2f, areaPercent = 12f),
-    NdviZone("sparse",  Color(0xFFED8936), 0.2f, 0.4f, areaPercent = 28f),
-    NdviZone("healthy", Color(0xFF48BB78), 0.4f, 0.6f, areaPercent = 35f),
-    NdviZone("dense",   Color(0xFF276749), 0.6f, 1.0f, areaPercent = 25f)
 )
 
 @HiltViewModel
@@ -39,8 +32,24 @@ class PlantZonesViewModel @Inject constructor(
     fun load(parcelId: String) {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
-            repository.getParcelById(parcelId).fold(
-                onSuccess = { parcel -> _state.update { it.copy(parcel = parcel, isLoading = false) } },
+            
+            val parcelResult = repository.getParcelById(parcelId)
+            val insightsResult = repository.getInsights(parcelId)
+            
+            parcelResult.fold(
+                onSuccess = { parcel -> 
+                    val zones = insightsResult.getOrNull()?.plantZones?.map { it.toNdviZone() } ?: emptyList()
+                    val bareZone = zones.find { it.id == "bare" }?.areaPercent ?: 0f
+                    
+                    _state.update { 
+                        it.copy(
+                            parcel = parcel, 
+                            zones = zones,
+                            stressedZoneIncreased = bareZone > 10f,
+                            isLoading = false
+                        ) 
+                    } 
+                },
                 onFailure = { _state.update { it.copy(isLoading = false) } }
             )
         }

@@ -44,4 +44,10 @@ class ParcelRepositoryImpl @Inject constructor(
             Unit
         }
     }
+
+    override suspend fun getInsights(id: String): Result<com.landroid.shared.models.InsightsResponse> = withContext(Dispatchers.IO) {
+        runCatching {
+            apiService.getInsights(id)
+        }
+    }
 }

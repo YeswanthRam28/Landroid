@@ -10,5 +10,5 @@ data class HealthSignal(
     val confidence: Int
 )
 
-enum class SignalType { NDVI, RAINFALL, TEMPERATURE, SOIL }
+enum class SignalType { NDVI, RAINFALL, TEMPERATURE, SOIL, DEVELOPMENT }
 enum class Trend { UP, DOWN, STABLE }

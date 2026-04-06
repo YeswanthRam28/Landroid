@@ -5,14 +5,11 @@ from sentinelhub import SHConfig, SentinelHubRequest, DataCollection, MimeType, 
 
 load_dotenv()
 
-# Configuration (Change these to match the parcel you want to process!)
-PARCEL_ID = "parcel_001"
-OUTPUT_DIR = f"supabase_storage/{PARCEL_ID}"
-# Bounding box of the parcel (min_lon, min_lat, max_lon, max_lat)
-BBOX_COORDS = [12.4, 41.8, 12.6, 42.0]
-DATE_RANGE = ("2023-08-01", "2023-08-31")
+# Configuration Defaults
+DEFAULT_OUTPUT_DIR = "supabase_storage"
+DEFAULT_DATE_RANGE = ("2023-08-01", "2023-08-31")
 
-def main():
+def process_parcel_bands(parcel_id: str, bbox_coords: list, output_dir: str = None):
     config = SHConfig()
     config.sh_client_id = os.getenv('SH_CLIENT_ID')
     config.sh_client_secret = os.getenv('SH_CLIENT_SECRET')
@@ -22,9 +19,10 @@ def main():
         print("Missing API credentials in .env file!")
         return
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    bbox = BBox(BBOX_COORDS, crs=CRS.WGS84)
-    print(f"Starting Landroid Pipeline processing for {PARCEL_ID}...\n")
+    target_dir = output_dir if output_dir else os.path.join(DEFAULT_OUTPUT_DIR, parcel_id)
+    os.makedirs(target_dir, exist_ok=True)
+    bbox = BBox(bbox_coords, crs=CRS.WGS84)
+    print(f"Starting Landroid Pipeline processing for {parcel_id}...\n")
 
     # The Android app uses OpenCV which expects 8-bit grayscale (0-255).
     # Since index values (NDVI, NDWI) range from -1 to 1, we must transform 
@@ -107,7 +105,7 @@ def main():
             evalscript=task["evalscript"],
             input_data=[SentinelHubRequest.input_data(
                 data_collection=DataCollection.SENTINEL2_L2A,
-                time_interval=DATE_RANGE
+                time_interval=DEFAULT_DATE_RANGE
             )],
             responses=[SentinelHubRequest.output_response("default", response_format=MimeType.TIFF)],
             bbox=bbox,
@@ -122,7 +120,7 @@ def main():
                 # The data is downloaded into the sentinelhub cache. 
                 # We save it explicitly using tifffile to our target folder.
                 import tifffile
-                out_path = os.path.join(OUTPUT_DIR, task['name'])
+                out_path = os.path.join(target_dir, task['name'])
                 tifffile.imwrite(out_path, image_array[0])
                 print(f"   Saved {out_path}")
             else:
@@ -131,7 +129,7 @@ def main():
             print(f"   Error fetching {task['name']}: {e}")
 
     print("\n✅ All bands generated! Ready for Landroid Supabase upload.")
-    print("If you need to optimize them as COGs like the guide suggests, you can run GDAL translation on this folder.")
+    print(f"If you need to optimize them as COGs, run GDAL translation on {target_dir}.")
 
 if __name__ == "__main__":
-    main()
+    process_parcel_bands("parcel_001", [12.4, 41.8, 12.6, 42.0])

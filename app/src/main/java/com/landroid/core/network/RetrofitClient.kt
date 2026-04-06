@@ -48,6 +48,9 @@ interface LandroidApiService {
 
     @retrofit2.http.GET("api/parcels/{id}/signals")
     suspend fun getSignals(@retrofit2.http.Path("id") id: String): List<com.landroid.shared.models.HealthSignal>
+
+    @retrofit2.http.GET("api/parcels/{id}/insights")
+    suspend fun getInsights(@retrofit2.http.Path("id") id: String): com.landroid.shared.models.InsightsResponse
 }
 
 object RetrofitClient {

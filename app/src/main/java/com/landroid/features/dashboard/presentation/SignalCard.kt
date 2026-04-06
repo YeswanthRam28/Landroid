@@ -24,6 +24,7 @@ import androidx.compose.material.icons.outlined.Opacity
 import androidx.compose.material.icons.outlined.Park
 import androidx.compose.material.icons.outlined.Thermostat
 import androidx.compose.material.icons.outlined.WaterDrop
+import androidx.compose.material.icons.outlined.Star
 
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -54,6 +55,7 @@ fun SignalCard(signal: HealthSignal) {
         SignalType.RAINFALL    -> Triple(LandroidColors.SecondaryContainer.copy(0.1f), LandroidColors.Secondary, Icons.Outlined.WaterDrop)
         SignalType.TEMPERATURE -> Triple(LandroidColors.TertiaryFixed.copy(0.1f), LandroidColors.Tertiary, Icons.Outlined.Thermostat)
         SignalType.SOIL        -> Triple(Color(0xFFF5F5F4), Color(0xFF78716C), Icons.Outlined.Opacity)
+        SignalType.DEVELOPMENT -> Triple(LandroidColors.PrimaryContainer.copy(0.1f), Color(0xFFF39C12), Icons.Outlined.Star)
     }
 
     val (trendIcon, trendColor) = when (signal.trend) {
