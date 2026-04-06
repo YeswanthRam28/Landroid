@@ -40,11 +40,13 @@ android {
             )
             buildConfigField("String", "SUPABASE_URL", "\"${envProperties.getProperty("SUPABASE_URL", "")}\"")
             buildConfigField("String", "SUPABASE_ANON_KEY", "\"${envProperties.getProperty("SUPABASE_ANON_KEY", "")}\"")
+            buildConfigField("String", "BACKEND_API_URL", "\"${envProperties.getProperty("BACKEND_API_URL", "http://172.16.41.76:8000/")}\"")
         }
         debug {
             isDebuggable = true
             buildConfigField("String", "SUPABASE_URL", "\"${envProperties.getProperty("SUPABASE_URL", "")}\"")
             buildConfigField("String", "SUPABASE_ANON_KEY", "\"${envProperties.getProperty("SUPABASE_ANON_KEY", "")}\"")
+            buildConfigField("String", "BACKEND_API_URL", "\"${envProperties.getProperty("BACKEND_API_URL", "http://172.16.41.76:8000/")}\"")
         }
     }
 

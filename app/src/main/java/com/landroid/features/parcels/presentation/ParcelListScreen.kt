@@ -148,6 +148,10 @@ fun ParcelListScreen(
                 activeRoute = "parcels",
                 onNavigate = { route ->
                     when (route) {
+                        "map/default" -> {
+                            val firstId = state.parcels.firstOrNull()?.id ?: "demo"
+                            navController.navigate(Screen.Map.createRoute(firstId))
+                        }
                         "alerts"   -> navController.navigate(Screen.Alerts.route)
                         "settings" -> navController.navigate(Screen.Settings.route)
                         else -> {}

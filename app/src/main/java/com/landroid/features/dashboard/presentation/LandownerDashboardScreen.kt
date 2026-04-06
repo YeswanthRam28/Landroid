@@ -87,6 +87,7 @@ fun LandownerDashboardScreen(
                 activeRoute = "parcels", // Assuming it conceptually replaces parcels
                 onNavigate = { route ->
                     when (route) {
+                        "map/default" -> activeParcel?.let { navController.navigate(Screen.Map.createRoute(it.id)) }
                         "alerts"   -> navController.navigate(Screen.Alerts.route)
                         "settings" -> navController.navigate(Screen.Settings.route)
                         else -> {}

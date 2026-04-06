@@ -30,6 +30,24 @@ interface LandroidApiService {
         @Url url: String,
         @QueryMap params: Map<String, String>
     ): NominatimResponse
+
+    @retrofit2.http.GET("api/parcels")
+    suspend fun getParcels(): List<com.landroid.shared.models.Parcel>
+
+    @retrofit2.http.GET("api/parcels/{id}")
+    suspend fun getParcel(@retrofit2.http.Path("id") id: String): com.landroid.shared.models.Parcel
+
+    @retrofit2.http.POST("api/parcels")
+    suspend fun createParcel(@retrofit2.http.Body parcel: com.landroid.shared.models.Parcel): com.landroid.shared.models.Parcel
+
+    @retrofit2.http.POST("api/auth/send-otp")
+    suspend fun sendOtp(@retrofit2.http.Body request: Map<String, String>): Map<String, String>
+
+    @retrofit2.http.POST("api/auth/verify-otp")
+    suspend fun verifyOtp(@retrofit2.http.Body request: Map<String, String>): com.landroid.shared.models.UserProfile
+
+    @retrofit2.http.GET("api/parcels/{id}/signals")
+    suspend fun getSignals(@retrofit2.http.Path("id") id: String): List<com.landroid.shared.models.HealthSignal>
 }
 
 object RetrofitClient {

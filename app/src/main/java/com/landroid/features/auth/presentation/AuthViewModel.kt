@@ -1,23 +1,16 @@
-// app/src/main/java/com/landroid/features/auth/presentation/AuthViewModel.kt
 package com.landroid.features.auth.presentation
 
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
+import com.landroid.core.network.LandroidApiService
 import com.landroid.core.security.TokenManager
-import com.landroid.features.auth.data.AuthRepository
 import com.landroid.shared.models.UserProfile
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 sealed class AuthState {
@@ -37,9 +30,8 @@ data class AuthUiState(
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val repository: AuthRepository,
-    private val tokenManager: TokenManager,
-    private val firebaseAuth: FirebaseAuth
+    private val apiService: LandroidApiService,
+    private val tokenManager: TokenManager
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(AuthUiState())
@@ -53,92 +45,39 @@ class AuthViewModel @Inject constructor(
         _state.update { it.copy(authState = AuthState.Loading) }
         tokenManager.saveRole(role)
 
-        // HACKATHON BYPASS: Prevent billing issues and SMS quotas
-        if (phoneNumber == "+910000000000" || phoneNumber == "0000000000") {
-            _state.update {
-                it.copy(
-                    verificationId = "bypass_id",
-                    authState = AuthState.CodeSent("bypass_id")
-                )
-            }
-            return
-        }
-
-        val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                viewModelScope.launch {
-                    handleCredential(credential)
-                }
-            }
-
-            override fun onVerificationFailed(e: FirebaseException) {
-                _state.update { it.copy(authState = AuthState.Error(e.message ?: "Verification failed")) }
-            }
-
-            override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
+        viewModelScope.launch {
+            runCatching {
+                val response = apiService.sendOtp(mapOf("phone" to phoneNumber))
+                val verificationId = response["verificationId"] ?: "unknown"
                 _state.update {
                     it.copy(
                         verificationId = verificationId,
                         authState = AuthState.CodeSent(verificationId)
                     )
                 }
+            }.onFailure { e ->
+                _state.update { it.copy(authState = AuthState.Error(e.message ?: "Failed to reach FastAPI")) }
             }
         }
-
-        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
-            .setPhoneNumber(phoneNumber)
-            .setTimeout(60L, TimeUnit.SECONDS)
-            .setActivity(activity)
-            .setCallbacks(callbacks)
-            .build()
-
-        PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
     fun verifyOtp(code: String, verificationId: String) {
         viewModelScope.launch {
             _state.update { it.copy(authState = AuthState.Loading) }
             
-            // HACKATHON BYPASS: Mock login
-            if (verificationId == "bypass_id" && code == "000000") {
-                val mockUser = UserProfile(
-                    uid = "mock_uid_1234",
-                    name = "Demo User",
-                    phone = "+910000000000",
-                    role = if (tokenManager.getRole() == "consultant") com.landroid.shared.models.UserRole.CONSULTANT else com.landroid.shared.models.UserRole.LANDOWNER
+            runCatching {
+                val userProfile = apiService.verifyOtp(
+                    mapOf(
+                        "phone" to _state.value.phoneNumber,
+                        "otp" to code,
+                        "role" to (tokenManager.getRole() ?: "CONSULTANT")
+                    )
                 )
-                tokenManager.saveToken("mock_uid_1234")
-                _state.update { it.copy(authState = AuthState.Success(mockUser)) }
-                return@launch
+                tokenManager.saveToken(userProfile.uid)
+                _state.update { it.copy(authState = AuthState.Success(userProfile)) }
+            }.onFailure { e ->
+                _state.update { it.copy(authState = AuthState.Error(e.message ?: "Invalid OTP")) }
             }
-            
-            val credential = PhoneAuthProvider.getCredential(verificationId, code)
-            handleCredential(credential)
-        }
-    }
-
-    private suspend fun handleCredential(credential: PhoneAuthCredential) {
-        repository.verifyOtp(credential).fold(
-            onSuccess = { user ->
-                _state.update { it.copy(authState = AuthState.Success(user)) }
-            },
-            onFailure = { e ->
-                _state.update { it.copy(authState = AuthState.Error(e.message ?: "Auth failed")) }
-            }
-        )
-    }
-
-    fun signInWithGoogle(idToken: String) {
-        viewModelScope.launch {
-            _state.update { it.copy(authState = AuthState.Loading) }
-            repository.signInWithGoogle(idToken).fold(
-                onSuccess = { user ->
-                    _state.update { it.copy(authState = AuthState.Success(user)) }
-                },
-                onFailure = { e ->
-                    _state.update { it.copy(authState = AuthState.Error(e.message ?: "Google sign-in failed")) }
-                }
-            )
         }
     }
 
