@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Landroid</string>
+    <string name="app_tagline">AI Land Intelligence</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_consultant_cta">I\'m a Land Consultant</string>
+    <string name="onboarding_landowner_cta">I\'m a Landowner</string>
+    <string name="onboarding_role_disclaimer">Role selection is permanent after sign-up</string>
+
+    <!-- OTP Screen -->
+    <string name="otp_title">Verify Your Number</string>
+    <string name="otp_subtitle">Enter the 6-digit code sent to</string>
+    <string name="otp_google_cta">Continue with Google</string>
+    <string name="otp_or_enter_code">OR ENTER CODE</string>
+    <string name="otp_resend_prefix">Resend in</string>
+    <string name="otp_verify_cta">Verify &amp; Continue</string>
+    <string name="otp_terms">By continuing, you agree to the Terms of Service</string>
+
+    <!-- Parcel List -->
+    <string name="parcels_greeting">Good morning</string>
+    <string name="parcels_search_hint">Search parcels…</string>
+    <string name="parcels_count">%1$d Parcels</string>
+    <string name="parcels_at_risk">%1$d At Risk</string>
+    <string name="parcels_alerts">%1$d Alerts</string>
+    <string name="parcel_health_score">LAND HEALTH SCORE</string>
+    <string name="parcel_assigned_to">Assigned to: %1$s</string>
+    <string name="parcel_ndvi_label">NDVI</string>
+    <string name="parcel_rain_label">RAIN</string>
+    <string name="parcel_soil_label">SOIL</string>
+
+    <!-- Navigation -->
+    <string name="nav_map">Map</string>
+    <string name="nav_parcels">Parcels</string>
+    <string name="nav_alerts">Alerts</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Map Screen -->
+    <string name="map_layer_ortho">Ortho</string>
+    <string name="map_layer_ndvi">NDVI</string>
+    <string name="map_layer_elevation">Elevation</string>
+    <string name="map_layer_health">Health Zones</string>
+    <string name="map_layer_boundary">Boundary</string>
+    <string name="map_health_score_label">HEALTH SCORE</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Land Health</string>
+    <string name="dashboard_confidence">CONFIDENCE LEVEL</string>
+    <string name="dashboard_verified">VERIFIED VIA SENTINEL-2 SATELLITE INTELLIGENCE</string>
+
+    <!-- Tree Count -->
+    <string name="trees_detected">%1$d Trees Detected</string>
+    <string name="trees_label">trees detected</string>
+    <string name="trees_per_acre">/ acre</string>
+    <string name="trees_stressed">stressed</string>
+    <string name="trees_view_markers">Markers</string>
+    <string name="trees_view_heatmap">Heatmap</string>
+
+    <!-- Valuation -->
+    <string name="valuation_title">Estimated Land Value</string>
+    <string name="valuation_disclaimer">Intelligence estimate — not a legal valuation</string>
+    <string name="valuation_drivers">What\'s driving this estimate</string>
+    <string name="valuation_update_info">Updates when Land Health Score changes</string>
+    <string name="valuation_positive">↑ Positive</string>
+    <string name="valuation_negative">↓ Negative</string>
+
+    <!-- Alerts -->
+    <string name="alerts_title">Alerts</string>
+    <string name="alerts_filter_all">All</string>
+    <string name="alerts_filter_boundary">Boundary</string>
+    <string name="alerts_filter_health">Health</string>
+    <string name="alerts_filter_insight">Insight</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_ta">தமிழ்</string>
+    <string name="settings_geofence">Geofence Alert Buffer</string>
+    <string name="settings_cache">Storage &amp; Cache</string>
+    <string name="settings_cache_clear">Clear All Cached Data</string>
+    <string name="settings_account">Account</string>
+    <string name="settings_sign_out">Log Out</string>
+    <string name="settings_role_consultant">Consultant</string>
+    <string name="settings_role_landowner">Landowner</string>
+
+    <!-- Documents -->
+    <string name="documents_title">Document Vault</string>
+    <string name="document_download">Download</string>
+
+    <!-- Health Status -->
+    <string name="status_healthy">HEALTHY</string>
+    <string name="status_moderate">MODERATE</string>
+    <string name="status_at_risk">AT RISK</string>
+</resources>

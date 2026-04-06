@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <!-- Main Service Domains -->
+        <domain includeSubdomains="true">supabase.co</domain>
+        <domain includeSubdomains="true">firebase.google.com</domain>
+        <domain includeSubdomains="true">googleapis.com</domain>
+        <domain includeSubdomains="true">maplibre.org</domain>
+        <domain includeSubdomains="true">maptiler.com</domain>
+        <domain includeSubdomains="true">nominatim.openstreetmap.org</domain>
+        <domain includeSubdomains="true">overpass-api.de</domain>
+        <domain includeSubdomains="true">planetarycomputer.microsoft.com</domain>
+
+        <!-- Use strict trust for production, but pin-set is optional -->
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+
+        <!-- 
+          Note: Certificate pinning should be configured with real SHA-256 digests
+          prior to production release to prevent man-in-the-middle attacks.
+          For common APIs like Supabase, pinning the root CA is recommended.
+        -->
+    </domain-config>
+
+    <!-- Local testing config -->
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>

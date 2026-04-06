@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Landroid - Parcel Detail GIS</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#2c1700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#234f38",
+                    "on-primary-fixed": "#002112",
+                    "inverse-surface": "#31312d",
+                    "on-tertiary-fixed-variant": "#683d00",
+                    "surface-bright": "#fcf9f3",
+                    "primary-container": "#1a4731",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#3b674f",
+                    "on-tertiary-container": "#ee9727",
+                    "surface-container-highest": "#e5e2dc",
+                    "tertiary": "#3f2300",
+                    "surface-container-low": "#f6f3ed",
+                    "inverse-primary": "#a1d1b4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1c1c18",
+                    "secondary-fixed": "#d8e3fa",
+                    "on-primary-container": "#86b598",
+                    "background": "#fcf9f3",
+                    "on-background": "#1c1c18",
+                    "surface": "#fcf9f3",
+                    "outline-variant": "#c1c9c1",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline": "#717972",
+                    "surface-container-high": "#ebe8e2",
+                    "primary-fixed": "#bdeecf",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#5d3600",
+                    "secondary-container": "#d5e0f7",
+                    "primary": "#00301c",
+                    "tertiary-fixed": "#ffdcbc",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "primary-fixed-dim": "#a1d1b4",
+                    "surface-dim": "#dcdad4",
+                    "tertiary-fixed-dim": "#ffb86b",
+                    "surface-variant": "#e5e2dc",
+                    "on-secondary-container": "#586377",
+                    "on-secondary-fixed": "#111c2c",
+                    "on-surface-variant": "#414943",
+                    "inverse-on-surface": "#f3f0ea",
+                    "error": "#ba1a1a",
+                    "secondary": "#545f72",
+                    "surface-container": "#f0eee8",
+                    "secondary-fixed-dim": "#bcc7dd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Plus Jakarta Sans", "sans-serif"],
+                    "label": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .map-overlay-polygon {
+            clip-path: polygon(20% 10%, 80% 15%, 90% 60%, 50% 90%, 10% 70%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface overflow-hidden">
+<!-- Full Screen Map Base -->
+<div class="fixed inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="high-resolution aerial satellite photography of lush river valley farmland with intricate natural water patterns and varying shades of deep green vegetation" data-location="Kaveri River Valley" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3inF49s-B7N67tU_48tNo12BajPGIlZUYbyp0vOAy3hcSr-MUX4sIhqdDHZy0IaB9xvp7Mq9CghbH2ALsmGUy8mMd70cU_giGtI0HnRD5yNTXLLbrkjlIdlQFe76VJEV86VSyNkV8P5PN8FvLRfPdtaNp3vhhhZtBklIuomClkKQ2F10RgK7fFr8Urzan6OFx5aqngr0cB0-swi8AN_mJOzSe2Yo4XO2n9gvD5b65qTl9CfcRiKPLj6ikpNC_pbDERDaq5jT1k7n0"/>
+<!-- GIS Boundary Overlay -->
+<div class="absolute inset-0 flex items-center justify-center opacity-80 pointer-events-none">
+<div class="w-[80%] h-[60%] border-[3px] border-primary-container bg-primary-container/40 map-overlay-polygon shadow-[0_0_40px_rgba(26,71,49,0.4)]">
+</div>
+</div>
+</div>
+<!-- Top Floating Bar (Shared Component Context) -->
+<header class="fixed top-0 left-0 w-full z-50 px-4 pt-6">
+<div class="max-w-xl mx-auto flex items-center justify-between bg-surface-container-lowest/85 backdrop-blur-xl rounded-full px-4 py-3 shadow-[0_8px_32px_rgba(28,28,24,0.08)]">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline italic text-xl tracking-tight text-on-surface">Kaveri River View</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface">share</span>
+</button>
+</div>
+</header>
+<!-- Layer Toggle Row -->
+<div class="fixed top-24 left-0 w-full z-40">
+<div class="flex items-center gap-3 px-6 overflow-x-auto no-scrollbar py-2">
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-primary-container text-white font-label text-sm font-bold tracking-tight shadow-lg">
+                Ortho
+            </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label text-sm font-medium border border-outline-variant/20">
+                NDVI
+            </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label text-sm font-medium border border-outline-variant/20">
+                Elevation
+            </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label text-sm font-medium border border-outline-variant/20">
+                Health Zones
+            </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label text-sm font-medium border border-outline-variant/20">
+                Boundary
+            </button>
+</div>
+</div>
+<!-- Health Badge (Top-Right Map Overlay) -->
+<div class="fixed top-40 right-6 z-40">
+<div class="bg-surface-container-lowest/80 backdrop-blur-xl p-4 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.12)] flex flex-col items-center min-w-[100px]">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Health Score</span>
+<span class="font-headline font-bold text-4xl text-primary-container">58</span>
+<div class="mt-2 px-3 py-1 bg-tertiary-container/10 rounded-full">
+<span class="text-[11px] font-bold text-tertiary-container uppercase tracking-tight">Moderate</span>
+</div>
+</div>
+</div>
+<!-- Map Interactions / Floating Tools -->
+<div class="fixed right-6 bottom-48 z-40 flex flex-col gap-3">
+<button class="w-12 h-12 bg-surface-container-lowest/90 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">layers</span>
+</button>
+<button class="w-12 h-12 bg-surface-container-lowest/90 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+<!-- Bottom Drawer (Peek State) -->
+<div class="fixed bottom-0 left-0 w-full z-50">
+<div class="bg-surface shadow-[0_-12px_40px_rgba(0,0,0,0.1)] rounded-t-[32px] pt-3 pb-12 px-6 max-w-4xl mx-auto">
+<!-- Pull Tab -->
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full mx-auto mb-6"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<!-- Parcel Basic Info -->
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<h2 class="font-headline text-2xl font-bold text-on-surface">Kaveri River View</h2>
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-label text-sm text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">landscape</span>
+                        142.42 ACRES • PERENNIAL WATER ACCESS
+                    </p>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex items-center gap-3">
+<button class="flex-1 md:flex-none flex flex-col items-center justify-center gap-1 p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary-container group-active:scale-90 transition-transform">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Dashboard</span>
+</button>
+<button class="flex-1 md:flex-none flex flex-col items-center justify-center gap-1 p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary-container group-active:scale-90 transition-transform">park</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Trees</span>
+</button>
+<button class="flex-1 md:flex-none flex flex-col items-center justify-center gap-1 p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary-container group-active:scale-90 transition-transform">description</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Documents</span>
+</button>
+<button class="h-full px-6 bg-primary-container text-white rounded-2xl font-bold text-sm hover:opacity-90 transition-opacity">
+                        Analyze
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Shared Bottom Navigation (Suppressed based on Task Flow focus) -->
+<!-- As per "Navigation Shell Suppression Rule", this focused map view prioritizes content canvas -->
+</body></html>

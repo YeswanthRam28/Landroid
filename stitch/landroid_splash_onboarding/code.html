@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Landroid - AI Land Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#2c1700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#234f38",
+                    "on-primary-fixed": "#002112",
+                    "inverse-surface": "#31312d",
+                    "on-tertiary-fixed-variant": "#683d00",
+                    "surface-bright": "#fcf9f3",
+                    "primary-container": "#1a4731",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#3b674f",
+                    "on-tertiary-container": "#ee9727",
+                    "surface-container-highest": "#e5e2dc",
+                    "tertiary": "#3f2300",
+                    "surface-container-low": "#f6f3ed",
+                    "inverse-primary": "#a1d1b4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1c1c18",
+                    "secondary-fixed": "#d8e3fa",
+                    "on-primary-container": "#86b598",
+                    "background": "#fcf9f3",
+                    "on-background": "#1c1c18",
+                    "surface": "#fcf9f3",
+                    "outline-variant": "#c1c9c1",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline": "#717972",
+                    "surface-container-high": "#ebe8e2",
+                    "primary-fixed": "#bdeecf",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#5d3600",
+                    "secondary-container": "#d5e0f7",
+                    "primary": "#00301c",
+                    "tertiary-fixed": "#ffdcbc",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "primary-fixed-dim": "#a1d1b4",
+                    "surface-dim": "#dcdad4",
+                    "tertiary-fixed-dim": "#ffb86b",
+                    "surface-variant": "#e5e2dc",
+                    "on-secondary-container": "#586377",
+                    "on-secondary-fixed": "#111c2c",
+                    "on-surface-variant": "#414943",
+                    "inverse-on-surface": "#f3f0ea",
+                    "error": "#ba1a1a",
+                    "secondary": "#545f72",
+                    "surface-container": "#f0eee8",
+                    "secondary-fixed-dim": "#bcc7dd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Plus Jakarta Sans", "sans-serif"],
+                    "label": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .topo-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='800' height='400' viewBox='0 0 800 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 350 Q 200 300 400 350 T 800 300 M0 300 Q 200 250 400 300 T 800 250 M0 250 Q 200 200 400 250 T 800 200 M0 200 Q 200 150 400 200 T 800 150 M0 150 Q 200 100 400 150 T 800 100' stroke='%231A4731' stroke-width='0.5' fill='none' opacity='0.08'/%3E%3C/svg%3E");
+            background-size: cover;
+        }
+        body {
+            background-color: #fcf9f3;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface min-h-screen flex flex-col justify-between overflow-hidden">
+<!-- Top Navigation Shell Suppressed per Transactional Rule -->
+<main class="flex-grow flex flex-col items-center justify-center relative px-6">
+<!-- Topographic Background Layer -->
+<div class="absolute inset-0 topo-bg pointer-events-none opacity-40"></div>
+<!-- Brand Identity Cluster -->
+<div class="z-10 text-center space-y-2">
+<h1 class="text-[36px] font-headline font-bold italic tracking-tight text-[#1A4731]">
+                Landroid
+            </h1>
+<p class="text-[14px] font-body tracking-[0.05em] text-[#4A5568] uppercase">
+                AI Land Intelligence
+            </p>
+</div>
+<!-- Visual Anchor -->
+<div class="mt-12 w-24 h-px bg-[#1A4731]/20"></div>
+</main>
+<!-- Onboarding Interaction Section -->
+<section class="w-full max-w-md mx-auto px-6 pb-16 z-10 space-y-6">
+<div class="flex flex-col gap-4">
+<!-- Primary CTA -->
+<button class="w-full bg-[#1A4731] text-[#FCF9F3] py-5 px-8 rounded-full font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-[#234f38]">
+                I'm a Land Consultant
+            </button>
+<!-- Secondary CTA -->
+<button class="w-full border-2 border-[#1A4731] text-[#1A4731] py-5 px-8 rounded-full font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-[#1A4731]/5">
+                I'm a Landowner
+            </button>
+</div>
+<!-- Footnote / Fine Print -->
+<div class="text-center">
+<p class="text-[11px] text-[#4A5568] font-medium leading-relaxed">
+                Role selection is permanent after sign-up
+            </p>
+</div>
+</section>
+<!-- Bottom Navigation Shell Suppressed per Transactional Rule -->
+<!-- Decorative Corner Element -->
+<div class="fixed bottom-0 right-0 p-8 opacity-10 pointer-events-none">
+<div class="flex flex-col items-end gap-1">
+<span class="text-[10px] font-bold tracking-widest uppercase">Precision Survey v.4.0</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-xs">grid_3x3</span>
+<span class="material-symbols-outlined text-xs">location_searching</span>
+</div>
+</div>
+</div>
+<!-- Hidden Map Context (Design System Placeholder) -->
+<div class="hidden">
+<img data-alt="high-resolution satellite imagery of a rural farming landscape with diverse crop patterns and defined parcel boundaries in natural morning light" data-location="Iowa River Valley" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvFaCadDLTqikyFi82eqzTM5drg335tUFbPNN5A7Am7_ikHg0yvZ6lVaJaBFt5aYgrzvyBfYhNaFQoO9qbFgsGRbjTJXNqT3UELV6gejQ09U4QEF519XVqQOMOoQ2NMtep2MpjFRLlNeuMEf5RS4o7w--2Hl8B0C0qW-VY-vnfVMJ0SqXD57Rh0TPvV_hsRBQ9j-9EJ0Gd00joDnt2FvcnaKO1SLOr6nwn_tT1V2vLM0EMOmhnDJhaSGR_7CD3vqm6pIgIL3RFw95b"/>
+</div>
+</body></html>

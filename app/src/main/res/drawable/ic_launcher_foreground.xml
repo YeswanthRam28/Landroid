@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Stylized Leaf/Land Icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,34 C44,34 34,44 34,54 C34,64 44,74 54,74 C64,74 74,64 74,54 C74,44 64,34 54,34 Z" />
+    <path
+        android:fillColor="#00E676"
+        android:pathData="M54,40 L60,54 L54,62 L48,54 Z" />
+</vector>

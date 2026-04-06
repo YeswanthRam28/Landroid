@@ -1,0 +1,43 @@
+// app/src/main/java/com/landroid/core/theme/Color.kt
+package com.landroid.core.theme
+
+import androidx.compose.ui.graphics.Color
+
+object LandroidColors {
+    val Primary = Color(0xFF00301C)
+    val PrimaryContainer = Color(0xFF1A4731)
+    val PrimaryFixed = Color(0xFFBDEECF)
+    val PrimaryFixedDim = Color(0xFFA1D1B4)
+    val OnPrimaryFixedVariant = Color(0xFF234F38)
+    val Surface = Color(0xFFFCF9F3)
+    val SurfaceContainer = Color(0xFFF0EEE8)
+    val SurfaceContainerLow = Color(0xFFF6F3ED)
+    val SurfaceContainerLowest = Color(0xFFFFFFFF)
+    val SurfaceContainerHigh = Color(0xFFEBE8E2)
+    val SurfaceContainerHighest = Color(0xFFE5E2DC)
+    val SurfaceDim = Color(0xFFDCDAD4)
+    val Tertiary = Color(0xFF3F2300)
+    val TertiaryContainer = Color(0xFF5D3600)
+    val TertiaryFixed = Color(0xFFFFDCBC)
+    val TertiaryFixedDim = Color(0xFFFFB86B)
+    val OnTertiaryFixedVariant = Color(0xFF683D00)
+    val OnTertiaryContainer = Color(0xFFEE9727)
+    val Secondary = Color(0xFF545F72)
+    val SecondaryContainer = Color(0xFFD5E0F7)
+    val Error = Color(0xFFBA1A1A)
+    val ErrorContainer = Color(0xFFFFDAD6)
+    val OnErrorContainer = Color(0xFF93000A)
+    val Outline = Color(0xFF717972)
+    val OutlineVariant = Color(0xFFC1C9C1)
+    val OnSurface = Color(0xFF1C1C18)
+    val OnSurfaceVariant = Color(0xFF414943)
+    val AccentAmber = Color(0xFFD4820A)
+    val InverseSurface = Color(0xFF31312D)
+    val InverseOnSurface = Color(0xFFF3F0EA)
+    val OnPrimary = Color(0xFFFFFFFF)
+    val OnError = Color(0xFFFFFFFF)
+    val OnSecondary = Color(0xFFFFFFFF)
+    val OnTertiary = Color(0xFFFFFFFF)
+    val OnPrimaryFixed = Color(0xFF002112)
+    val OnTertiaryFixed = Color(0xFF2C1700)
+}
