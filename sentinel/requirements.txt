@@ -1,0 +1,4 @@
+sentinelhub
+python-dotenv
+numpy
+matplotlib
